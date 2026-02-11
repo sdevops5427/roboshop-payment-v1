@@ -4,21 +4,8 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 jobs:
-  test:
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run a one-line script
-        run: echo python -m unittest discover
-  docker:
-    runs-on: self-hosted
-    needs: test
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
-      - name: docker login
-        run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 389841108590.dkr.ecr.us-east-1.amazonaws.com
-      - run: docker build -t 389841108590.dkr.ecr.us-east-1.amazonaws.com/payment .
-        name: docker build
-      - run: docker push 389841108590.dkr.ecr.us-east-1.amazonaws.com/payment
-        name: docker push
+  ci_cd_common:
+    uses: sdevops5427/reusable-github-actions/.github/workflows/ci.yml@main
+    with:
+      component: payment
+      appType: python
