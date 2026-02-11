@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 jobs:
   ci_cd_common:
-    uses: sdevops5427/reusable-github-actions/.github/workflows/ci.yml@main
+    uses: ./.github/workflows/ci.yml@main
     with:
       component: payment
       appType: python
