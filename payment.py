@@ -23,7 +23,7 @@ CART = os.getenv('CART_HOST', 'cart')
 CART_PORT = os.getenv('CART_PORT', 8080)
 USER = os.getenv('USER_HOST', 'user')
 USER_PORT = os.getenv('USER_PORT', 8080)
-PAYMENT_GATEWAY = os.getenv('PAYMENT_GATEWAY', 'https://google.com/')
+PAYMENT_GATEWAY = os.getenv('PAYMENT_GATEWAY', 'http://frontend/health')
 
 # Prometheus
 PromMetrics = {}
