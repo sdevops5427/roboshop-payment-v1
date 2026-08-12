@@ -1,16 +1,9 @@
-FROM          python:3-slim
+FROM          python:3
 RUN           useradd -m -d /app roboshop
 WORKDIR       /app
 USER          roboshop
 COPY          payment.ini payment.py rabbitmq.py requirements.txt /app/
-#RUN           pip3 install -r requirements.txt
-RUN           apt-get update && \
-              apt-get install -y --no-install-recommends \
-                gcc \
-                python3-dev \
-                build-essential && \
-              rm -rf /var/lib/apt/lists/*
-RUN           pip3 install --no-cache-dir -r requirements.txt
+RUN           pip3 install -r requirements.txt
 ENTRYPOINT    ["/app/.local/bin/uwsgi", "--ini", "payment.ini"]
 
 
